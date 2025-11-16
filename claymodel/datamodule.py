@@ -244,7 +244,7 @@ class ClayDataModule(L.LightningDataModule):
         self.batch_size = batch_size
         self.num_workers = num_workers
         self.prefetch_factor = prefetch_factor
-        self.split_ratio = 0.8
+        self.split_ratio = 0.7
 
     def setup(self, stage: Literal["fit", "predict"] | None = None) -> None:
         # Get list of GeoTIFF filepaths from s3 bucket or data/ folder
@@ -258,13 +258,24 @@ class ClayDataModule(L.LightningDataModule):
         print(f"Total number of chips: {len(chips_path)}")
 
         if stage == "fit":
-            trn_paths, val_paths = train_test_split(
-                chips_path,
-                test_size=(1 - self.split_ratio),
-                stratify=chips_platform,
-                shuffle=True,
-            )
+        # Check how many unique platforms we have
+            unique_platforms = set(chips_platform)
 
+            if len(unique_platforms) > 1:
+                # Use stratification if multiple platforms exist
+                trn_paths, val_paths = train_test_split(
+                    chips_path,
+                    test_size=(1 - self.split_ratio),
+                    stratify=chips_platform,
+                    shuffle=True,
+                )
+            else:
+                # Disable stratification if only one platform (e.g. NAIP)
+                trn_paths, val_paths = train_test_split(
+                    chips_path,
+                    test_size=(1 - self.split_ratio),
+                    shuffle=True,
+                )
             self.trn_ds = EODataset(
                 chips_path=trn_paths,
                 size=self.size,
