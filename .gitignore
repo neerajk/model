@@ -71,3 +71,4 @@ datadisk/
 # pip
 .venv
 *.ckpt
+data*/
