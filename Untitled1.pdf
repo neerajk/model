@@ -1,0 +1,366 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "b5aa5788-182d-4ea2-b77c-170561d4568c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Question 1 \n",
+    "\n",
+    "pi = 3.14\n",
+    "r = 5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "81c672ca-98c8-486f-9ad3-49f87f358a40",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\n",
+    "vol_sphere = 4/3*pi*r*r*r"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "205847dc-9575-43c8-beee-99239e3550b0",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "523.3333333333334"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "vol_sphere"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "625bf11e-43d9-4fda-8390-758d9e0ef126",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Question 2\n",
+    "\n",
+    "cover_price = 24.95\n",
+    "discount = 0.4\n",
+    "\n",
+    "shipping_cost_first_copy = 3\n",
+    "shipping_cost_next_copy = 0.75\n",
+    "\n",
+    "quantity = 60\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "b107a436-98e9-4e29-ad9e-bc3bbf33ce7a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "discounted_price = cover_price - (cover_price * discount)\n",
+    "shipping_cost = shipping_cost_first_copy + (59 * shipping_cost_next_copy)\n",
+    "\n",
+    "total_cost = (discounted_price * 60) + shipping_cost"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "965b82fa-9b4c-45b3-8ae1-b775af4bdc03",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "945.4499999999999"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "total_cost"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "6e46ebc9-5448-4d28-a736-759e8421ab26",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "23"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "easy_pace = 8 + 15 % 60\n",
+    "easy_pace"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "5a66ecc3-390c-44db-a2c9-6b4d6995a2cb",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Home for breakfast at: 7:30:06\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 3\n",
+    "# Start time\n",
+    "start_hour = 6\n",
+    "start_minute = 52\n",
+    "\n",
+    "# Convert start time to total seconds\n",
+    "start_seconds = (start_hour * 60 + start_minute) * 60\n",
+    "\n",
+    "# Pace times in seconds\n",
+    "easy_pace_seconds = 8 * 60 + 15      # 1 mile at easy pace\n",
+    "tempo_pace_seconds = 7 * 60 + 12     # per mile at tempo pace\n",
+    "\n",
+    "# Total run time in seconds\n",
+    "total_run_seconds = (\n",
+    "    easy_pace_seconds +             # first easy mile\n",
+    "    3 * tempo_pace_seconds +        # three tempo miles\n",
+    "    easy_pace_seconds               # final easy mile\n",
+    ")\n",
+    "\n",
+    "# End time in seconds\n",
+    "end_seconds = start_seconds + total_run_seconds\n",
+    "\n",
+    "# Convert back to hours, minutes, seconds\n",
+    "end_hour = end_seconds // 3600\n",
+    "end_minute = (end_seconds % 3600) // 60\n",
+    "end_second = end_seconds % 60\n",
+    "\n",
+    "# Display result\n",
+    "print(f\"Home for breakfast at: {int(end_hour)}:{int(end_minute):02d}:{int(end_second):02d}\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "7f606f1a-16b1-40c9-a206-2dd9468ad00f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Gross Salary of Ram:  8000.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 4\n",
+    "\n",
+    "basic_salary = 5000\n",
+    "\n",
+    "dearness_allowance = 0.4 * basic_salary\n",
+    "\n",
+    "hra = 0.2 * basic_salary\n",
+    "\n",
+    "gross_salary = basic_salary + dearness_allowance + hra\n",
+    "\n",
+    "print('Gross Salary of Ram: ',gross_salary)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "88a403cc-2919-416d-aff4-7a28625e59be",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "100 km in meters:  100000\n",
+      "In centimeters: 10000000\n",
+      "In inches:  3937007.874015748\n",
+      "In feet:  328083.9895013123\n",
+      "In yards:  109361.32983377077\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 5\n",
+    "\n",
+    "km = 100  # Example distance\n",
+    "meters = km * 1000\n",
+    "centimeters = meters * 100\n",
+    "inches = centimeters / 2.54\n",
+    "feet = inches / 12\n",
+    "yards = feet / 3\n",
+    "\n",
+    "print(km, 'km in meters: ',meters)\n",
+    "print(\"In centimeters:\",centimeters)\n",
+    "print(\"In inches: \",inches)\n",
+    "print(\"In feet: \",feet)\n",
+    "print(\"In yards: \",yards)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "6896b1f4-806d-40ba-aa07-e09244327a98",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Temperature: 98.6°F = 37.00°C\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 6\n",
+    "\n",
+    "fahrenheit = 98.6 \n",
+    "celsius = (fahrenheit - 32) * 5 / 9\n",
+    "print(f\"Temperature: {fahrenheit}°F = {celsius:.2f}°C\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "bdb1b5ed-fdf1-4eac-8b9f-e32b6530eaa3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Question 7 \n",
+    "\n",
+    "\n",
+    "start_hour = 12 \n",
+    "start_min = 17\n",
+    "\n",
+    "time_in_min = start_hour * 60 + start_min\n",
+    "\n",
+    "time_to_add = 59\n",
+    "\n",
+    "total_time_in_mins = time_in_min + time_to_add\n",
+    "time_in_hours = total_time_in_mins // 60\n",
+    "time_in_mins = total_time_in_mins % 60"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "b74805e7-b9f9-4d69-b496-e98c9fc1675b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "13"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "time_in_hours"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "2199d7ea-21bf-4861-99a7-83a7253b47b0",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "16"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "time_in_mins"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "8fc98a28-09e9-4852-b8da-ff67f278d2a5",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "If the event starts at 12:17, will end at 13:16\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(f'If the event starts at {start_hour}:{start_min}, will end at {time_in_hours}:{time_in_mins}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6c8a8adc-bdc8-4d67-af41-f0152f8d40f7",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [conda env:base] *",
+   "language": "python",
+   "name": "conda-base-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
