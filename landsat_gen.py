@@ -8,7 +8,9 @@ from pystac.extensions.eo import EOExtension as eo
 
 # === User Inputs ===
 # Example: bbox = [min_lon, min_lat, max_lon, max_lat]
-bbox = list(map(float, input("Enter bbox as min_lon,min_lat,max_lon,max_lat: ").split(",")))
+bbox = list(
+    map(float, input("Enter bbox as min_lon,min_lat,max_lon,max_lat: ").split(","))
+)
 time = input("Enter time range (YYYY-MM-DD/YYYY-MM-DD): ")
 
 # === Connect to Planetary Computer ===
@@ -19,10 +21,10 @@ catalog = pystac_client.Client.open(
 
 # === Search Landsat Collection ===
 search = catalog.search(
-    collections=['landsat-c2-l2'],
+    collections=["landsat-c2-l2"],
     bbox=bbox,
     datetime=time,
-    query={'eo:cloud_cover': {'lt': 10}},
+    query={"eo:cloud_cover": {"lt": 10}},
 )
 
 items = search.get_all_items()
@@ -36,7 +38,7 @@ print(
 )
 
 # === Load Data ===
-bands_of_interest = ['nir08', 'red', 'green', 'blue']
+bands_of_interest = ["nir08", "red", "green", "blue"]
 data = odc.stac.load(
     [selected_item],
     bands=bands_of_interest,
@@ -49,7 +51,7 @@ os.makedirs(output_folder, exist_ok=True)
 
 # === Generate NCC (Natural Color Composite) ===
 plt.figure(figsize=(8, 8))
-plt.imshow(data[['red', 'green', 'blue']].to_array())
+plt.imshow(data[["red", "green", "blue"]].to_array())
 plt.title("Natural Color Composite (NCC)")
 plt.axis("off")
 plt.savefig(os.path.join(output_folder, "NCC.png"), dpi=300, bbox_inches="tight")
@@ -58,7 +60,7 @@ plt.close()
 # === Generate FCC (False Color Composite) ===
 # FCC usually uses NIR, Red, Green → RGB
 plt.figure(figsize=(8, 8))
-plt.imshow(data[['nir08', 'red', 'green']].to_array())
+plt.imshow(data[["nir08", "red", "green"]].to_array())
 plt.title("False Color Composite (FCC)")
 plt.axis("off")
 plt.savefig(os.path.join(output_folder, "FCC.png"), dpi=300, bbox_inches="tight")
