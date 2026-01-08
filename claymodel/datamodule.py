@@ -258,7 +258,7 @@ class ClayDataModule(L.LightningDataModule):
         print(f"Total number of chips: {len(chips_path)}")
 
         if stage == "fit":
-        # Check how many unique platforms we have
+            # Check how many unique platforms we have
             unique_platforms = set(chips_platform)
 
             if len(unique_platforms) > 1:
